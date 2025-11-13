@@ -1,0 +1,115 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+        <li class="breadcrumb-item active">Categories</li>
+      </ol>
+    </nav>
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <!-- Categories List -->
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header bg-marine-blue text-marine-blue d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Liste des Catégories</h5>
+              <button class="btn btn-light btn-sm" (click)="openAddCategoryModal()">
+                <i class="bi bi-plus me-1"></i> Ajouter Catégorie
+              </button>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li *ngFor="let category of filteredCategories"
+                  class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class="bi bi-archive-fill me-2 text-marine-blue"></i>{{ category?.nom }}
+                  </div>
+                  <div>
+                    <span (click)="openEditCategoryModal(category)" style="cursor: pointer;">
+                      <i class="bi bi-pencil-square"></i>
+                    </span>
+                    <span (click)="openDeleteCategoryModal(category)" style="cursor: pointer; margin-left: 10px;">
+                      <i class="bi bi-trash"></i>
+                    </span>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Add Category Modal -->
+  <p-dialog [(visible)]="displayModal" header="Ajouter une Nouvelle Catégorie" [modal]="true" [closable]="false"
+    [style]="{ width: '600px' }">
+    <div style="padding: 20px;">
+      <form (ngSubmit)="onSubmit()">
+        <!-- Category Name -->
+        <div class="p-fluid mb-3">
+          <label for="categoryName" class="form-label">Nom de la catégorie:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-archive-fill"></i></span>
+            <input pInputText id="categoryName" [(ngModel)]="category.nom" name="newCategoryName"
+              placeholder="Nom de la catégorie" class="form-control" required />
+          </div>
+        </div>
+        <!-- Submit Button -->
+        <div class="text-end mt-4">
+          <button pButton type="submit" label="Enregistrer" class="btn btn-success me-2"></button>
+          <button pButton type="button" label="Annuler" class="btn btn-danger"
+            (click)="closeAddCategoryModal()"></button>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+
+  <!-- Edit Category Modal -->
+  <p-dialog [(visible)]="displayEditModal" header="Modifier la Catégorie" [modal]="true" [closable]="false"
+    [style]="{ width: '600px' }">
+    <div style="padding: 10px;">
+      <form (ngSubmit)="onEditSubmit()">
+        <!-- Category Name -->
+        <div class="p-fluid mb-3">
+          <label for="editCategoryName" class="form-label">Nom de la catégorie:</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-archive-fill"></i></span>
+            <input pInputText id="editCategoryName" [(ngModel)]="category.nom" name="editCategoryName"
+              placeholder="Nom de la catégorie" required />
+          </div>
+        </div>
+
+        <!-- Submit Button -->
+        <div class="text-end mt-4">
+          <button pButton type="submit" label="Enregistrer" class="btn btn-success me-2"></button>
+          <button pButton type="button" label="Annuler" class="btn btn-danger"
+            (click)="displayEditModal = false"></button>
+        </div>
+      </form>
+    </div>
+  </p-dialog>
+
+  <!-- Delete Category Modal -->
+  <p-dialog [(visible)]="deleteCategoryDialog" header="Supprimer la Catégorie" [modal]="true" [closable]="false"
+    [style]="{ width: '600px' }">
+    <div style="padding: 10px;">
+      <div class="confirmation-content">
+        <p>Êtes-vous sûr de vouloir supprimer cette catégorie? Cette action est irréversible.</p>
+      </div>
+      <div class="text-end">
+        <button pButton type="button" label="Supprimer" class="btn btn-danger" (click)="deleteCategory()"></button>
+        <button pButton type="button" label="Annuler" class="btn btn-secondary" (click)="closeDeleteDialog()"></button>
+      </div>
+    </div>
+  </p-dialog>
+</main>
+
+<app-footer></app-footer>

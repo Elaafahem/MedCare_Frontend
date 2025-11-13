@@ -1,0 +1,144 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+  <section class="section">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-header bg-marine-blue text-marine-blue d-flex justify-content-between align-items-center">
+          <h5 class="mb-0">Liste des Médicaments</h5>
+          <button class="btn btn-light btn-sm" (click)="openAddModal()">
+            <i class="bi-plus me-1"></i> Ajouter Médicament
+          </button>
+        </div>
+        <div class="card-body">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Nom du Médicament</th>
+                <th>Description</th>
+                <th>Catégorie</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let medicament of medicaments">
+                <td>{{ medicament.medicamentId }}</td>
+                <td>{{ medicament.nom }}</td>
+                <td>{{ medicament.description }}</td>
+                <td>{{ medicament.categorie.nom }}</td>
+                <td>
+                  <span (click)="openEditModal(medicament)" style="cursor: pointer;">
+                    <i class="bi bi-pencil-square" style="color: #013a63; font-size: 1.2rem;"></i>
+                  </span>
+                  <span (click)="openDeleteModal(medicament)" style="cursor: pointer; margin-left: 10px;">
+                    <i class="bi bi-trash" style="color: #013a63; font-size: 1.2rem;"></i>
+                  </span>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <p-dialog
+      [(visible)]="displayModal"
+      header="Ajouter un Nouveau Médicament"
+      [modal]="true"
+      [closable]="false"
+      [style]="{ width: '800px', maxWidth: '90vw' }"
+    >
+      <div style="padding: 32px 24px;">
+        <form (ngSubmit)="onSubmit()">
+          <div class="row mb-4">
+            <!-- Nom du Médicament -->
+            <div class="col-md-6">
+              <label for="medicamentNom" class="form-label fw-bold">Nom du Médicament:</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-capsule"></i></span>
+                <input
+                  pInputText
+                  id="medicamentNom"
+                  [(ngModel)]="medicament.nom"
+                  name="nom"
+                  placeholder="Nom du Médicament"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+            <!-- Description -->
+            <div class="col-md-6">
+              <label for="medicamentDescription" class="form-label fw-bold">Description:</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-info-circle"></i></span>
+                <input
+                  pInputText
+                  id="medicamentDescription"
+                  [(ngModel)]="medicament.description"
+                  name="description"
+                  placeholder="Description"
+                  class="form-control"
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <!-- Catégorie Dropdown -->
+          <div class="mb-4">
+            <label for="categorie" class="form-label fw-bold">Catégorie:</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="bi bi-folder"></i></span>
+              <p-dropdown
+                id="categorie"
+                [(ngModel)]="medicament.categorieId"
+                [options]="categories"
+                optionLabel="nom"
+                optionValue="categorieId"
+                placeholder="Sélectionner une Catégorie"
+                name="categorie"
+                [style]="{ width: '100%' }"
+                [scrollHeight]="'350px'"
+                required
+              ></p-dropdown>
+            </div>
+          </div>
+          <!-- Buttons -->
+          <div class="d-flex justify-content-end gap-3 mt-4">
+            <button
+              type="submit"
+              class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm"
+            >Enregistrer</button>
+            <button
+              type="button"
+              class="btn btn-secondary rounded-pill px-4 fw-bold shadow-sm"
+              (click)="displayModal = false"
+            >Annuler</button>
+          </div>
+        </form>
+      </div>
+    </p-dialog>
+
+    <p-dialog [(visible)]="displayDeleteModal" [modal]="true" [closable]="true" [header]="'Supprimer Médicament'"
+      [style]="{width: '30vw'}">
+      <p>Êtes-vous sûr de vouloir supprimer ce médicament ?</p>
+      <div class="text-end">
+        <div class="d-flex justify-content-end gap-3 mt-4">
+          <button
+            type="submit"
+            class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm"  (click)="deleteMedicament()"
+          >Supprimer</button>
+          <button
+            type="button"
+            class="btn btn-secondary rounded-pill px-4 fw-bold shadow-sm"
+            (click)="closeDeleteModal()"
+          >Annuler</button>
+        </div>
+      
+      </div>
+    </p-dialog>
+  </section>
+</main>
+
+<app-footer></app-footer>

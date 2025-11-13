@@ -1,0 +1,30 @@
+.btn{ 
+    color: #f8f9fa;
+    background-color: #013a63;
+  }
+  .payment-form-container {
+    margin: 20px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 1.5em;
+  }
+  
+  .section {
+    margin-bottom: 20px;
+  }
+  
+  .field {
+    margin-bottom: 15px;
+  }
+  
+  .form-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  

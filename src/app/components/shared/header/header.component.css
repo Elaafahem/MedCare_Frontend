@@ -1,0 +1,41 @@
+.notifications-container {
+  max-height: 400px;
+  /* Ajustez cette hauteur selon vos besoins */
+  overflow-y: auto;
+}
+
+/* Pour s'assurer que la liste a un style correct */
+.notifications {
+  width: 400px;
+  /* Ajustez la largeur selon vos besoins */
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+.notification-item {
+  cursor: pointer;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
+
+.notification-item:hover {
+  background-color: #f1f1f1;
+}
+
+/* Sidebar hidden by default */
+.sidebar {
+  display: none;
+  /* Other styles for your sidebar */
+}
+
+/* Sidebar visible when .active class is added */
+.sidebar.active {
+  display: block;
+  /* Adjust visibility, transition, etc. */
+}
+
+/* Sidebar toggle button */
+.toggle-sidebar-btn {
+  cursor: pointer;
+}

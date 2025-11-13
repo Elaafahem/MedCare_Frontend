@@ -1,0 +1,156 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+        <li class="breadcrumb-item active">Sous-Catégories</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section">
+    <div class="container">
+      <div class="row">
+        <!-- Subcategories List -->
+        <div class="col-12">
+          <div class="card">
+            <div class="card-header bg-marine-blue text-marine-blue d-flex justify-content-between align-items-center">
+              <h5 class="mb-0">Liste des Sous-Catégories</h5>
+              <button class="btn btn-sm" data-bs-toggle="modal" data-bs-target="#addSubcategoryModal">
+                <i class=" bi-plus me-1"></i> Ajouter Sous-Catégorie
+              </button>
+            </div>
+            <div class="card-body">
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class=" bi-archive me-2 text-marine-blue"></i>Sous-Catégorie 1
+                  </div>
+                  <div>
+                    <span data-bs-toggle="modal" data-bs-target="#editSubcategoryModal" style="cursor: pointer;">
+                      <i class="bi bi-pencil-square" ></i>
+                    </span>
+                    <span data-bs-toggle="modal" data-bs-target="#deleteSubcategoryModal" style="cursor: pointer; margin-left: 10px;">
+                      <i class="bi bi-trash"></i>
+                    </span>
+                  </div>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                  <div>
+                    <i class=" bi-archive me-2 text-marine-blue"></i>Sous-Catégorie 2
+                  </div>
+                  <div>
+                    <span data-bs-toggle="modal" data-bs-target="#editSubcategoryModal" style="cursor: pointer;">
+                      <i class="bi bi-pencil-square" ></i>
+                    </span>
+                    <span data-bs-toggle="modal" data-bs-target="#deleteSubcategoryModal" style="cursor: pointer; margin-left: 10px;">
+                      <i class="bi bi-trash" ></i>
+                    </span>
+                  </div>
+                </li>
+              
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Modal for Adding New Subcategory -->
+  <div class="modal fade" id="addSubcategoryModal" tabindex="-1" aria-labelledby="addSubcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-marine-blue text-white">
+          <h5 class="modal-title" id="addSubcategoryModalLabel">Ajouter une Nouvelle Sous-Catégorie</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="subcategoryName" class="form-label"></label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-archive"></i></span>
+                <input type="text" class="form-control" id="subcategoryName" placeholder="Nom de la sous-catégorie">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="categorySelect" class="form-label">Catégorie</label>
+              <select class="form-select" id="categorySelect">
+                <option selected>Choisir une catégorie...</option>
+                <option value="1">Catégorie 1</option>
+                <option value="2">Catégorie 2</option>
+                <option value="3">Catégorie 3</option>
+                <!-- Add more categories as needed -->
+              </select>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn">Enregistrer</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Editing Subcategory -->
+  <div class="modal fade" id="editSubcategoryModal" tabindex="-1" aria-labelledby="editSubcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-marine-blue text-white">
+          <h5 class="modal-title" id="editSubcategoryModalLabel">Modifier la Sous-Catégorie</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="editSubcategoryName" class="form-label">Nom de la Sous-Catégorie</label>
+              <div class="input-group">
+                <span class="input-group-text"><i class="bi bi-folder2"></i></span>
+                <input type="text" class="form-control" id="editSubcategoryName" placeholder="Nom de la sous-catégorie">
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="editCategorySelect" class="form-label">Catégorie</label>
+              <select class="form-select" id="editCategorySelect">
+                <option selected>Choisir une catégorie...</option>
+                <option value="1">Catégorie 1</option>
+                <option value="2">Catégorie 2</option>
+                <option value="3">Catégorie 3</option>
+                <!-- Add more categories as needed -->
+              </select>
+            </div>
+            <div class="text-end">
+              <button type="submit" class="btn btn">Enregistrer les modifications</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Deleting Subcategory -->
+  <div class="modal fade" id="deleteSubcategoryModal" tabindex="-1" aria-labelledby="deleteSubcategoryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-danger text-white">
+          <h5 class="modal-title" id="deleteSubcategoryModalLabel">Supprimer la Sous-Catégorie</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Êtes-vous sûr de vouloir supprimer cette sous-catégorie? Cette action est irréversible.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+          <button type="button" class="btn btn-danger">Supprimer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<app-footer></app-footer>

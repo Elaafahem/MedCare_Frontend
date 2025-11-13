@@ -1,0 +1,248 @@
+.p_btn{
+  color: #f8f9fa;
+  background-color: #013a63;
+}
+.form-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-auto-rows: auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+.observation-field {
+  grid-column: span 2; /* Spans across two columns in the grid */
+}
+.rounded-button {
+  border-radius: 50px; /* Crée des coins arrondis */
+  padding: 0.5rem 1.5rem; /* Ajuste l'espacement interne */
+  font-size: 1rem; /* Taille de texte */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Effet d'ombre */
+}
+
+.rounded-button:hover {
+  box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.15); /* Effet d'ombre lors du survol */
+  transform: scale(1.05); /* Agrandissement léger au survol */
+}
+
+.rounded-button:active {
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); /* Réduction de l'ombre lors du clic */
+  transform: scale(0.95); /* Réduction légère au clic */
+}
+
+.button-field {
+  display: flex; /* Arrange buttons in a row */
+  gap: 8px; /* Reduce space between buttons (adjust as needed) */
+  justify-content: flex-end; /* Center buttons in their container */
+  margin-top: 1rem; /* Adjust spacing above/below the group */
+}
+.btn-field1 {
+
+  display: flex;
+  justify-content: flex-end; /* Place the button at the end of the line */
+  align-items: center;
+  grid-column: span 2; /* Align with the Symptoms field */
+}
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+.required {
+  color: red;
+}
+/* Conteneur principal */
+.form-container {
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Titre et description */
+.header-section {
+  text-align: center;
+}
+
+.header-section h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: #4caf50; /* Couleur verte pour le titre */
+}
+
+.description {
+  color: #757575;
+  font-size: 0.9rem;
+}
+
+/* Ligne des médicaments */
+.medication-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) 50px;
+  gap: 1rem;
+  align-items: center;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 1rem;
+}
+
+/* Form Group */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+input,
+textarea,
+p-dropdown {
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+/* Boutons d'action */
+.form-actions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Boutons principaux */
+.action-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+/* Smaller buttons for a clean layout */
+button.p-button-sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}
+
+/* Bouton principal avec effet de survol */
+button.p-button-raised {
+  padding: 0.6rem 1.2rem;
+}
+
+button.p-button-danger {
+  margin-top: 1rem;
+}
+
+button.p-button-raised:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Table Ordonnance */
+.p-datatable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.p-datatable th,
+.p-datatable td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.p-datatable th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+}
+
+.p-datatable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+
+.icon-only-button {
+  background: none; /* No background */
+  border: #013a63; /* No border */
+  
+  padding: 0; /* Remove padding */
+  margin: 0; /* Optional, remove margins */
+ 
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: #013a63;
+}
+.ordonnance-header {
+  display: flex;          /* Enable flexbox layout */
+  align-items: center;    /* Align items vertically in the center */
+  justify-content: left; /* Ensure spacing between heading and button */
+  gap: 10px;              /* Optional: Add space between the heading and button */
+}
+
+.ordonnance-header h4 {
+  margin: 0; /* Remove default margin on h4 for better alignment */
+}
+/* Visit History Header Section */
+.visit-history-container {
+  padding: 2rem;
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1.5rem;
+}
+
+.visit-history-header {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.visit-history-header h3 {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  color: #4caf50; /* Align with other titles */
+}
+
+.visit-history-header p {
+  color: #757575;
+  font-size: 0.9rem;
+}
+
+/* Visit History Table */
+.visit-history-table .p-datatable {
+  width: 100%;
+  margin-top: 1rem;
+  border-collapse: collapse;
+}
+
+.visit-history-table .p-datatable th,
+.visit-history-table .p-datatable td {
+  border: 1px solid #ddd;
+  padding: 0.8rem;
+  text-align: left;
+}
+
+.visit-history-table .p-datatable th {
+  background-color: #f5f5f5;
+  font-weight: bold;
+  color: #333;
+}
+
+.visit-history-table .p-datatable tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.visit-history-table a.ordonnance-link {
+  color: #013a63; /* Match primary theme */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.visit-history-table a.ordonnance-link:hover {
+  text-decoration: underline;
+}

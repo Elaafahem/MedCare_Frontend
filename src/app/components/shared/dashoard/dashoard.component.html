@@ -1,0 +1,154 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Dashboard</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+        <li class="breadcrumb-item active">Dashboard</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <section class="section dashboard">
+    <div class="row">
+      <!-- Left side columns -->
+      <div class="col-lg-8">
+        <div class="row">
+          <!-- Patient and Visit Statistics Cards -->
+          <div *ngIf="userRole === 'Medecin'" class="col-12">
+            <div class="row">
+              <!-- Total Patients Card -->
+              <div class="col-xxl-6 col-md-6">
+                <div class="card info-card patients-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Patients</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-people"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{ totalPatients }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Total Patients Card -->
+
+              <!-- Total Visits Card -->
+              <div class="col-xxl-6 col-md-6">
+                <div class="card info-card visits-card">
+                  <div class="card-body">
+                    <h5 class="card-title">Total Visits</h5>
+                    <div class="d-flex align-items-center">
+                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-calendar-check"></i>
+                      </div>
+                      <div class="ps-3">
+                        <h6>{{ totalVisits }}</h6>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Total Visits Card -->
+            </div>
+          </div><!-- End Patient and Visit Statistics Cards -->
+
+          <!-- Visits by Patient Chart -->
+          <div *ngIf="userRole === 'Medecin'" class="col-12">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Visits by Patient</h5>
+                  <canvas id="visitsByPatientChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Visits by Patient Chart -->
+
+          <!-- Visit Trends Chart -->
+          <div *ngIf="userRole === 'Medecin'" class="col-12">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Visit Trends</h5>
+                  <canvas id="visitTrendsChart"></canvas>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Visit Trends Chart -->
+        </div>
+      </div><!-- End Left side columns -->
+
+      <!-- Right side columns -->
+      <div class="col-lg-4">
+        <!-- Recent Activity -->
+        <div *ngIf="userRole === 'Medecin'" class="col-12">
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">Recent Visits</h5>
+              <div class="activity">
+                <div *ngFor="let visit of recentVisits" class="activity-item d-flex">
+                  <div class="activite-label">
+                    {{ formatDuration(visit.dateVisite) }}
+                  </div>
+                  <i class="bi bi-circle-fill activity-badge text-success align-self-start"></i>
+                  <div class="activity-content">
+                    Visit for: <a href="#" class="fw-bold text-dark">{{ visit.motif }}</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div><!-- End Recent Activity -->
+
+          <!-- Visit Types Distribution -->
+          <div *ngIf="userRole === 'Medecin'" class="col-12">
+            <div class="col-12">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Catégories</h5>
+                  <canvas id="categoriesDonutChart"></canvas> <!-- Canvas pour le graphique donut -->
+                </div>
+              </div>
+            </div>
+          </div><!-- End Visit Types Distribution -->
+        </div>
+</div></div>
+        <!-- Admin specific content -->
+        <!-- Admin specific content -->
+        <div *ngIf="userRole === 'Admin'" class="row mt-4">
+          <!-- Total Médecins -->
+          <div class="col-md-4">
+            <div class="card info-card doctors-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Total Médecins</h5>
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center bg-info text-white">
+                    <i class="bi bi-person-badge"></i>
+                  </div>
+                  <div class="ps-3">
+                    <h6>{{ totalUsers }}</h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+          <!-- Médecins et nombre de patients par médecin -->
+          <div class="col-md-4" *ngFor="let entry of patientsByUser.slice(0, 2)">
+            <div class="card info-card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Médecin : {{ entry.username }}</h5>
+                <p>Nombre de patients : <strong>3</strong></p>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        
+
+    
+  </section>
+</main>
+<app-footer></app-footer>

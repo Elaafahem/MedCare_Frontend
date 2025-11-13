@@ -1,0 +1,105 @@
+/* Style du modal */
+.p-dialog {
+  border-radius: 10px; /* Coins arrondis */
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* Ombre subtile */
+  background-color: #ffffff; /* Fond blanc pour le modal */
+}
+
+/* Header du modal */
+.p-dialog-header {
+  background-color: #4e73df; /* Couleur bleue pour l'en-tête */
+  color: white;
+  font-size: 1.5rem;
+  font-weight: bold;
+  border-top-left-radius: 10px; /* Coins arrondis */
+  border-top-right-radius: 10px;
+}
+
+/* Footer du modal */
+.p-dialog-footer {
+  background-color: #f8f9fa; /* Fond clair pour le footer */
+  padding: 20px;
+  border-bottom-left-radius: 10px; /* Coins arrondis */
+  border-bottom-right-radius: 10px;
+}
+
+/* Style des champs de formulaire */
+.p-field {
+  margin-bottom: 20px;
+}
+
+/* Label du champ */
+.p-field label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #495057; /* Gris foncé */
+}
+
+/* Champs de saisie */
+.p-field input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ced4da; /* Bordure subtile */
+  border-radius: 8px;
+  font-size: 1rem;
+  color: #495057;
+  background-color: #fff;
+  transition: border-color 0.3s ease;
+}
+
+/* Effet au focus sur les champs de saisie */
+.p-field input:focus {
+  border-color: #4e73df; /* Bordure bleue au focus */
+  box-shadow: 0 0 5px rgba(78, 115, 223, 0.5); /* Ombre bleue au focus */
+}
+
+/* Style des boutons */
+.p-button-success {
+  background-color: #4e73df; /* Bleu pour le bouton "Ajouter" */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 1rem;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.p-button-success:hover {
+  background-color: #3e59c7; /* Teinte plus foncée au survol */
+}
+
+.p-button-text {
+  color: #6c757d; /* Gris pour le bouton "Annuler" */
+  font-size: 1rem;
+}
+
+.p-button-text:hover {
+  color: #495057; /* Teinte plus foncée au survol */
+}
+
+/* Ajout d'une bordure fine autour du formulaire */
+form {
+  padding: 20px;
+  border-radius: 10px;
+  border: 1px solid #ced4da;
+  background-color: #f9f9f9;
+}
+
+/* Espacement entre les boutons */
+.p-dialog-footer button {
+  margin: 0 10px;
+}
+
+/* Animation de transition douce pour l'ouverture du modal */
+.p-dialog.ng-animating {
+  animation: fadeInModal 0.3s ease-in-out;
+}
+
+@keyframes fadeInModal {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}

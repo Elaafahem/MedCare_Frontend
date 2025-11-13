@@ -1,0 +1,100 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+  <div class="pagetitle">
+    <h1>Reglement</h1>
+    <nav>
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a href="index.html">Accueil</a></li>
+        <li class="breadcrumb-item active">Passer Reglement</li>
+      </ol>
+    </nav>
+  </div><!-- End Page Title -->
+
+  <!-- Payment Modal -->
+  <div class="modal-body">
+    <form [formGroup]="paymentModalForm" (ngSubmit)="onSubmit()">
+      <!-- Nom Ordre -->
+      <div class="field">
+        <label for="nom">Nom Ordre:</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-user"></i>
+          </span>
+          <input pInputText id="nom" formControlName="nom" placeholder="Entrez le nom" required />
+        </div>
+      </div>
+  
+      <!-- Visits Selection -->
+      <div class="field">
+        <label for="visitSelection">Sélectionnez les visites:</label>
+        <p-multiSelect
+          [options]="visits"
+          [(ngModel)]="selectedVisits"
+          optionLabel="label"
+          formControlName="visits"
+          placeholder="Choisissez des visites"
+          (onChange)="onVisitsChange()">
+        </p-multiSelect>
+      </div>
+  
+      <!-- Payment Amount -->
+      <div class="field">
+        <label for="paymentAmount">Montant Total:</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-wallet"></i>
+          </span>
+          <input pInputText id="paymentAmount" [value]="totalAmount" readonly placeholder="Montant Total" />
+        </div>
+      </div>
+  
+      <!-- Méthode de Paiement -->
+      <div class="field">
+        <label for="paymentMethod">Méthode de Paiement:</label>
+        <p-dropdown
+          id="paymentMethod"
+          formControlName="paymentMethod"
+          [options]="paymentMethods"
+          placeholder="Choisissez une méthode"
+          required>
+        </p-dropdown>
+      </div>
+  
+      <!-- Card Details (conditional rendering) -->
+      <div *ngIf="paymentModalForm.value.paymentMethod === 'creditCard'" class="field">
+        <label for="cardNumber">Numéro de Carte:</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-credit-card"></i>
+          </span>
+          <input pInputText id="cardNumber" formControlName="cardNumber" placeholder="Numéro de carte" maxlength="16" />
+        </div>
+  
+        <label for="cardCvc">Code de Sécurité:</label>
+        <div class="p-inputgroup">
+          <span class="p-inputgroup-addon">
+            <i class="pi pi-lock"></i>
+          </span>
+          <input pInputText id="cardCvc" formControlName="cardCvc" placeholder="CVC" maxlength="3" />
+        </div>
+      </div>
+  
+      <!-- Notes -->
+      <div class="field">
+        <label for="paymentNote">Notes:</label>
+        <p-textarea id="paymentNote" formControlName="paymentNote" rows="3" placeholder="Ajouter des notes (facultatif)"></p-textarea>
+      </div>
+  
+      <!-- Submit Button -->
+      <div class="text-end">
+        <button type="submit" class="btn btn-primary" (click)="onPaymentSubmit()">Confirmer le Paiement</button>
+        <button  type="cancel"  class="btn btn-danger" (click)="resetForm()">Annuler</button>
+      </div>
+    </form>
+  </div>
+  
+</main>
+
+<app-footer></app-footer>

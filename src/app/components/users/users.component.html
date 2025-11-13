@@ -1,0 +1,91 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+  <div class="user-management-container">
+   
+
+    <div class="pagetitle d-flex justify-content-between align-items-center">
+      <h1 class="mb-0">Gestion des Utilisateurs</h1>
+      <p-button icon="pi pi-plus" [rounded]="true" [text]="true" [raised]="false" (click)="displayAddUserModal = true">
+      </p-button>
+
+    </div>
+    <div class="user-table-section">
+      <p-table [value]="usersList" [paginator]="true" [rows]="10" [responsiveLayout]="'scroll'">
+        <ng-template pTemplate="header">
+          <tr>
+            <th>Nom d'utilisateur</th>
+            <th>Email</th>
+            <th>Rôle</th>
+            <th>Actions</th>
+          </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-user>
+          <tr>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <div class="action-buttons">
+
+                <button pButton icon="pi pi-trash" class="p-button-rounded p-button-danger p-button-sm"
+                  title="Supprimer l'utilisateur" (click)="deleteUser(user.username)"></button>
+              </div>
+            </td>
+          </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+
+    <p-dialog [(visible)]="displayAddUserModal" [modal]="true" [closable]="false"
+      [header]="'Ajouter un Nouveau Utilisateurs'" [style]="{width: '50vw'}">
+      <form #addUserForm="ngForm">
+        <div class="row g-3">
+
+          <div class="col-md-6">
+            <label for="username" class="form-label">username</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-user"></i></span>
+              <input type="text" id="username" class="form-control" [(ngModel)]="newUser.username" name="username"
+                placeholder="username" required>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <label for="email" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-user-plus"></i></span>
+              <input type="text" id="email" class="form-control" [(ngModel)]="newUser.email" name="email"
+                placeholder="email" required>
+            </div>
+          </div>
+
+
+          <div class="col-md-6">
+            <label for="password" class="form-label">password</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-envelope"></i></span>
+              <input type="password" id="password" class="form-control" [(ngModel)]="newUser.password" name="password"
+                placeholder="password" required>
+            </div>
+          </div>
+
+
+
+        </div>
+
+        <div class="p-dialog-footer">
+          <button pButton label="Annuler" icon="pi pi-times" class="btn btn"
+            (click)="displayAddUserModal = false"></button>
+          <button pButton label="Ajouter" icon="pi pi-check" class="btn btn me-2" (click)="addUser()"></button>
+        </div>
+      </form>
+    </p-dialog>
+
+  </div>
+</main>
+
+<app-footer></app-footer>

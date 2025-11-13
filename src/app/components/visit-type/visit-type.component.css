@@ -1,0 +1,120 @@
+.btn {
+    color: #f8f9fa;
+    background-color: #013a63;
+    border: none;
+    border-radius: 50px;
+    padding: 0.5em 1.5em;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+.visit-history-container {
+    background-color: #f9fafb;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .visit-history-header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .visit-history-header h3 {
+    font-size: 24px;
+    color: #4a90e2;
+    font-weight: bold;
+  }
+  
+  .visit-history-table {
+    background-color: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .p-datatable th {
+    background-color: #013a63;
+    color: #fff;
+    text-align: center;
+    padding: 12px 15px;
+  }
+  
+  .p-datatable td {
+    text-align: center;
+    padding: 12px 15px;
+    font-size: 14px;
+    color: #333;
+  }
+  
+  .p-datatable tr:hover {
+    background-color: #f1f1f1;
+    cursor: pointer;
+  }
+  
+  .ordonnance-link {
+    color: #013a63;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .ordonnance-link:hover {
+    text-decoration: underline;
+  }
+  
+  .pi {
+    margin-right: 5px;
+  }
+  
+  /* Pagination */
+  .p-paginator {
+    justify-content: center;
+    margin-top: 20px;
+  }
+  
+  .p-paginator .p-paginator-pages {
+    margin-top: 10px;
+  }
+  
+  .p-paginator .p-paginator-page {
+    background-color: #013a63;
+    border-color: #013a63;
+    color: white;
+  }
+  
+  .p-paginator .p-paginator-page.p-highlight {
+    background-color: #013a63;
+    border-color: #013a63;
+  }
+  
+  .p-paginator .p-paginator-page:hover {
+    background-color: #013a63;
+    border-color: #013a63;
+  }
+  /* Filter inputs style */
+.p-column-filter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 8px;
+  }
+  
+  .p-column-filter input {
+    width: 100%;
+    padding: 5px;
+    font-size: 14px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+    margin-top: 4px;
+    box-sizing: border-box;
+  }
+  
+  .p-column-filter-menu {
+    display: block;
+  }
+  
+  .p-column-filter input:focus {
+    border-color: #013a63;
+  }
+  
+  

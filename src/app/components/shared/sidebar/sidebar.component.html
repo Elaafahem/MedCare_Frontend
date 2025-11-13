@@ -1,0 +1,78 @@
+<aside id="sidebar" class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <!-- Dashboard Section (Visible for both Admin and Medecin) -->
+    <li class="nav-item" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/dashboard">
+        <i class="bi bi-house-door"></i>
+        <span>Acceuil</span>
+      </a>
+    </li><!-- End Dashboard Nav -->
+
+    <!-- Statistique Section (Only visible for Admin) -->
+
+
+
+
+  </ul>
+  <ul class="sidebar-nav" id="sidebar-nav">
+
+    <!-- Patients Section (Visible for Admin and Medecin) -->
+    <li class="nav-heading" *ngIf=" role === 'Medecin'">Patients</li>
+
+    <li class="nav-item" *ngIf=" role === 'Medecin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/Patients">
+        <i class="bi bi-people"></i>
+        <span>Patients</span>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf=" role === 'Medecin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/Visite">
+        <i class="bi bi-heart-pulse"></i>
+        <span>Visite</span>
+      </a>
+    </li>
+
+    <li class="nav-item" *ngIf=" role === 'Medecin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/VisitTypeComponent">
+        <i class="bi bi-file-medical"></i>
+        <span>Historique Visite</span>
+      </a>
+    </li>
+
+    <!-- Categorie Section (Visible for Admin and Medecin) -->
+    <li class="nav-item" *ngIf=" role === 'Medecin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/Categorie">
+        <i class="bi bi-archive-fill"></i>
+        <span>Categorie</span>
+      </a>
+    </li>
+
+    <!-- Medications Section (Visible for Admin and Medecin) -->
+    <li class="nav-item" *ngIf=" role === 'Medecin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/Article">
+        <i class="bi bi-cart-check"></i>
+        <span>Medicament</span>
+      </a>
+    </li>
+
+    <!-- Settings Section (Visible for Admin and Medecin) -->
+    <li class="nav-heading" *ngIf="role === 'Admin' || role === 'Medecin'">Settings</li>
+
+    <li class="nav-item" *ngIf="role === 'Admin' || role === 'Medecin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/">
+        <i class="ri-settings-3-line"></i>
+        <span>Settings</span>
+      </a>
+    </li>
+
+    <!-- Only Admin can see the Users list -->
+    <li class="nav-item" *ngIf="role === 'Admin'" (click)="sidebarclicked()">
+      <a class="nav-link collapsed" href="/#/Users">
+        <i class="pi pi-users"></i>
+        <span>Utilisateurs</span>
+      </a>
+    </li>
+  </ul>
+</aside><!-- End Sidebar -->

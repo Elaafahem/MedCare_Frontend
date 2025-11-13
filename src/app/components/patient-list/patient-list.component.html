@@ -1,0 +1,276 @@
+<app-header></app-header>
+<app-sidebar></app-sidebar>
+
+<main id="main" class="main">
+
+  <div class="pagetitle d-flex justify-content-between align-items-center">
+    <!-- Title for Patient List -->
+    <h1 class="mb-0">Liste des patients</h1>
+    <!-- Button to open the modal -->
+    <p-button icon="pi pi-plus" [rounded]="true" [text]="true" [raised]="false" (click)="openAddPatientModal()">
+    </p-button>
+
+  </div>
+  <!-- End Page Title -->
+
+  <section class="section patient-info">
+    <!-- Search Bar -->
+    <div class="col-12 mb-3">
+      <p-inputText [(ngModel)]="searchTerm" (input)="searchPatients()" placeholder="Rechercher un patient..."
+        class="w-100"></p-inputText>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col-12" *ngFor="let patient of filteredPatients">
+          <div class="card patient-profile">
+            <div class="card-header d-flex justify-content-between align-items-center bg-marine-blue text-white">
+              <div class="d-flex align-items-center">
+                <i class="bi bi-person-circle me-2"></i>
+                <h5 class="mb-0">{{ patient.nom }} {{ patient.prenom }}</h5>
+              </div>
+              <div class="d-flex align-items-center">
+                <span>ID: {{ patient.patientId }}</span>
+                <i class="bi bi-chevron-down ms-2" data-bs-toggle="collapse"
+                  [attr.data-bs-target]="'#patientInfoCollapse' + patient.patientId"
+                  aria-controls="patientInfoCollapse"></i>
+                <!-- Delete Icon -->
+                <i class="bi bi-trash ms-2 text-danger" style="cursor: pointer;"
+                  (click)="openDeletePatientModal(patient)" title="Supprimer"></i>
+              </div>
+            </div>
+
+            <!-- Collapsible Patient Info -->
+            <div [id]="'patientInfoCollapse' + patient.patientId" class="collapse">
+              <div class="card-body">
+                <div class="row">
+                  <div class="col-md-4">
+                    <strong>Date de Naissance:</strong>
+                    <p>{{ patient.dateNaiss }}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <strong>Adresse:</strong>
+                    <p>{{ patient.adresse }}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <strong>Téléphone:</strong>
+                    <p>{{ patient.tel }}</p>
+                  </div>
+                  <div class="col-md-4">
+                    <strong>Email:</strong>
+                    <p>{{ patient.email }}</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Link to open the modal for Medical Record -->
+              <div class="card-footer text-end">
+                <a href="#" class="text-primary" [attr.data-bs-target]="'#medicalRecordModal' + patient.patientId"
+                  data-bs-toggle="modal">
+                  Dossier Médical
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal for Medical Record -->
+          <div class="modal fade" [id]="'medicalRecordModal' + patient.patientId" tabindex="-1"
+            [attr.aria-labelledby]="'medicalRecordModalLabel' + patient.patientId" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+              <div class="modal-content">
+                <div class="modal-header bg-marine-blue text-white">
+                  <h5 class="modal-title" [id]="'medicalRecordModalLabel' + patient.patientId">
+                    <i class="bi bi-file-text me-2"></i>Dossier Médical
+                  </h5>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" [id]="'medicalRecordContent' + patient.patientId">
+                  <!-- Patient Photo -->
+                  <div class="text-center mb-4">
+                    <img src="path/to/patient-photo.jpg" alt="Photo de {{ patient.nom }} {{ patient.prenom }}"
+                      class="img-circle">
+                  </div>
+                  <!-- Medical record content in a table format -->
+                  <table class="table table-bordered">
+                    <tbody>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-person me-2"></i>Nom Prénom
+                        </th>
+                        <td>{{ patient.nom }} {{ patient.prenom }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-calendar me-2"></i>Date de Naissance
+                        </th>
+                        <td>{{ patient.dateNaiss }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-house-door me-2"></i>Adresse
+                        </th>
+                        <td>{{ patient.adresse }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-telephone me-2"></i>Téléphone
+                        </th>
+                        <td>{{ patient.tel }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-envelope me-2"></i>Email
+                        </th>
+                        <td>{{ patient.email }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-blood-drop me-2"></i>Groupe Sanguin
+                        </th>
+                        <td>{{ patient.bloodType }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-medical-kit me-2"></i>Antécédents médicaux
+                        </th>
+                        <td>{{ patient.medicalHistory }}</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">
+                          <i class="bi bi-clipboard me-2"></i>Observations
+                        </th>
+                        <td>{{ patient.observations }}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+                  <button type="button" class="btn btn-primary"
+                    (click)="printMedicalRecord(patient.patientId)">Imprimer</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- PrimeNG Delete Confirmation Modal (p-dialog)
+    <p-dialog 
+      [(visible)]="deletePatientDialog" 
+      [modal]="true" 
+      [closable]="false" 
+      [header]="'Confirmer la suppression'" 
+      [style]="{ width: '' }">
+      <p>Êtes-vous sûr de vouloir supprimer ce patient ? Cette action est irréversible.</p>
+      <p-footer>
+        <button type="button" pButton icon="pi pi-times" label="Annuler" (click)="closeDeleteDialog()"></button>
+        <button type="button" pButton icon="pi pi-check" label="Supprimer" class="p-button-danger" (click)="deletePatient()"></button>
+      </p-footer>
+    </p-dialog> -->
+    <!-- Delete Category Modal -->
+    <p-dialog [(visible)]="deletePatientDialog" header="Supprimer le patient" [modal]="true" [closable]="false"
+      [style]="{ width: '600px' }">
+      <div style="padding: 10px;">
+        <div class="confirmation-content">
+          <p>
+            Êtes-vous sûr de vouloir supprimer ce patient? Cette action est
+            irréversible.
+          </p>
+        </div>
+        <div class="text-end">
+        
+          <div class="d-flex justify-content-end gap-3 mt-4">
+            <button
+              type="submit"
+              class="btn btn-primary rounded-pill px-4 fw-bold shadow-sm"  (click)="deletePatient()"
+            >Supprimer</button>
+            <button
+              type="button"
+              class="btn btn-secondary rounded-pill px-4 fw-bold shadow-sm"
+              (click)="closeDeleteDialog()"
+            >Annuler</button>
+          </div>
+        </div>
+      </div>
+    </p-dialog>
+
+
+    <!-- PrimeNG Modal for Adding Patient -->
+    <p-dialog [(visible)]="displayModal" [modal]="true" [closable]="false" [header]="'Ajouter un Nouveau Patient'"
+      [style]="{width: '50vw'}">
+      <form (ngSubmit)="onSubmit()">
+        <div class="row g-3">
+          <!-- Nom -->
+          <div class="col-md-6">
+            <label for="patientNom" class="form-label">Nom</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-user"></i></span>
+              <input type="text" id="patientNom" class="form-control" [(ngModel)]="patient.nom" name="nom"
+                placeholder="Nom" required>
+            </div>
+          </div>
+
+          <!-- Prenom -->
+          <div class="col-md-6">
+            <label for="patientPrenom" class="form-label">Prénom</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-user-plus"></i></span>
+              <input type="text" id="patientPrenom" class="form-control" [(ngModel)]="patient.prenom" name="prenom"
+                placeholder="Prénom" required>
+            </div>
+          </div>
+
+          <!-- Email -->
+          <div class="col-md-6">
+            <label for="patientEmail" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-envelope"></i></span>
+              <input type="email" id="patientEmail" class="form-control" [(ngModel)]="patient.email" name="email"
+                placeholder="Email" required>
+            </div>
+          </div>
+
+          <!-- Adresse -->
+          <div class="col-md-6">
+            <label for="patientAdresse" class="form-label">Adresse</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-home"></i></span>
+              <input type="text" id="patientAdresse" class="form-control" [(ngModel)]="patient.adresse" name="adresse"
+                placeholder="Adresse" required>
+            </div>
+          </div>
+
+          <!-- Date de Naissance -->
+          <div class="col-md-6">
+            <label for="patientDateNaiss" class="form-label">Date de Naissance</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-calendar"></i></span>
+              <input type="date" id="patientDateNaiss" class="form-control" [(ngModel)]="patient.dateNaiss"
+                name="dateNaiss" required>
+            </div>
+          </div>
+
+          <!-- Téléphone -->
+          <div class="col-md-6">
+            <label for="patientTel" class="form-label">Téléphone</label>
+            <div class="input-group">
+              <span class="input-group-text"><i class="pi pi-phone"></i></span>
+              <input type="text" id="patientTel" class="form-control" [(ngModel)]="patient.tel" name="tel"
+                placeholder="Téléphone" required>
+            </div>
+          </div>
+        </div>
+
+        <!-- Buttons -->
+        <div class="text-end mt-3">
+          <button type="submit" pButton label="Enregistrer" class="btn btn me-2"></button>
+          <button type="button" pButton label="Annuler" class="btn btn" (click)="closeAddPatientModal()"></button>
+        </div>
+      </form>
+    </p-dialog>
+  </section>
+</main>
+
+<app-footer></app-footer>

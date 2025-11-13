@@ -1,0 +1,47 @@
+.profile-header {
+    background-color: #013a63;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px 5px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .profile-card {
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+  }
+  
+  .profile-image {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+  }
+  
+  .profile-details {
+    font-size: 0.9rem;
+  }
+  
+  .profile-details .icon {
+    font-size: 1.2rem;
+    color: #013a63;
+  }
+  
+  .info-section {
+    margin-bottom: 30px;
+  }
+  
+  .quick-access button {
+    font-size: 1rem;
+  }
+  
+  .quick-access button i {
+    margin-right: 10px;
+  }
+  .btn{ 
+    color: #f8f9fa;
+    background-color: #013a63;
+  }

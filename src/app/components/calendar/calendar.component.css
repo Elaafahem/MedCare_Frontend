@@ -1,0 +1,97 @@
+/* General Styles */
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  h1, h2 {
+    color: #013a63;
+  }
+  
+  /* Layout Styles */
+  .demo-app {
+    display: flex;
+    min-height: 100vh; /* Full viewport height */
+  }
+  
+  .demo-app-main {
+    flex: 3; /* Takes up more space than the sidebar */
+    padding: 2em;
+  }
+  
+  .demo-app-sidebar {
+    flex: 1; /* Sidebar takes up less space */
+    padding: 2em;
+    background-color: #f4f4f4;
+    border-left: 1px solid #ddd; /* Add a border to separate from calendar */
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Sidebar Section Styles */
+  .demo-app-sidebar-section {
+    margin-bottom: 2em;
+  }
+  
+  .demo-app-sidebar-section h2 {
+    margin-bottom: 1em;
+    font-size: 18px;
+  }
+  
+  .demo-app-sidebar-section ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .demo-app-sidebar-section ul li {
+    padding: 0.5em 0;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .demo-app-sidebar-section label {
+    display: block;
+    margin-bottom: 1em;
+  }
+  
+  /* Calendar Styles */
+  .fc {
+    max-width: 100%;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  /* FullCalendar Toolbar Button Styles */
+  .fc-header-toolbar .fc-button {
+    font-size: 8px; /* Adjust font size */
+    padding: 5px 10px; /* Adjust padding */
+    border-radius: 3px; /* Rounded corners */
+    background-color: #013a63; /* Background color */
+    color: white; /* Text color */
+    border: 1px solid #013a63; /* Border color */
+    transition: background-color 0.2s, color 0.2s; /* Smooth transition */
+  }
+  
+  .fc-header-toolbar .fc-button:hover {
+    background-color: #013a63; /* Darker background on hover */
+    color: #fff; /* White text on hover */
+  }
+  
+  /* Adjust the appearance of the title section */
+  .fc-toolbar-title {
+    font-size: 16px; /* Adjust font size */
+    font-weight: bold; /* Bold text */
+    margin: 0; /* Remove default margin */
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .demo-app {
+      flex-direction: column;
+    }
+  
+    .demo-app-sidebar {
+      border-left: none;
+      border-bottom: 1px solid #ddd;
+    }
+  }
+  
